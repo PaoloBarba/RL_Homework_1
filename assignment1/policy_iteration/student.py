@@ -25,9 +25,13 @@ def reward_probabilities(env_size):
 # If it is a possible state return s_prime, otherwise return s
 def check_feasibility(s_prime, s, env_size, obstacles):
   # TODO
-    if (s_prime > 0).all() and (s_prime - env_size >= 0).all():
-        if obstacles[s_prime[0] , s_prime[1]] == 0:
-            return s_prime
+    #print('sprime',s_prime)
+    #print('s',s)
+    #print('env',env_size)
+    #print('obs',obstacles)
+    #if (s_prime < env_size).all() and (s_prime >= 0).all():
+    #    if obstacles[s_prime[0] , s_prime[1]] == 0:
+    #        return s_prime
     return s
 
 def transition_probabilities(env, s, a, env_size, directions, obstacles):
@@ -36,7 +40,8 @@ def transition_probabilities(env, s, a, env_size, directions, obstacles):
     # TODO
     # Fill in the cells corresponding to the next possible states with the probability of visiting each of them
     # Remember to check the feasibility of each new state!
-    s_prime = check_feasibility([s[directions[0]], s[directions[0]]], s , env_size, obstacles)
+    
+    s_prime = check_feasibility(s + directions[a], s , env_size, obstacles)
     prob_next_state[s_prime[0], s_prime[1]] = 1/3
 
     s_prime = check_feasibility([s[directions[1]], s[directions[1]]], s , env_size, obstacles)
