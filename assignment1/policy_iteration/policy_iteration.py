@@ -1,7 +1,6 @@
 import random
 import numpy as np
 import gymnasium as gym
-
 from student import *
 
 def policy_iteration(env, env_size, end_state, directions, obstacles, gamma=0.99, max_iters=1000, theta=1e-3):
