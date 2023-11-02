@@ -25,10 +25,9 @@ def reward_probabilities(env_size):
 # If it is a possible state return s_prime, otherwise return s
 def check_feasibility(s_prime, s, env_size, obstacles):
   # TODO
-    if s_prime[0] > 0 and s_prime[1] < env_size:
-        if s_prime[1] > 0 and  s_prime[1] < env_size:
-            if obstacles[s_prime[0] , s_prime[1]] == 0:
-                return s_prime
+    if (s_prime > 0).all() and (s_prime - env_size >= 0).all():
+        if obstacles[s_prime[0] , s_prime[1]] == 0:
+            return s_prime
     return s
 
 def transition_probabilities(env, s, a, env_size, directions, obstacles):
