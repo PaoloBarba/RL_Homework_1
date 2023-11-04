@@ -46,12 +46,14 @@ def transition_probabilities(env, s, a, env_size, directions, obstacles):
         possibles_a = (3,2,0)
 
     s_prime = check_feasibility(s + directions[possibles_a[0]], s , env_size, obstacles)
-    prob_next_state[s_prime[0],s_prime[1]] = 1/3   
+    prob_next_state[s_prime[0],s_prime[1]] += 1/3   
     
     s_prime = check_feasibility(s + directions[possibles_a[1]], s , env_size, obstacles)
-    prob_next_state[s_prime[0],s_prime[1]] = 1/3
+    prob_next_state[s_prime[0],s_prime[1]] += 1/3
 
     s_prime = check_feasibility(s + directions[possibles_a[2]], s , env_size, obstacles)
-    prob_next_state[s_prime[0],s_prime[1]] =1/3
+    prob_next_state[s_prime[0],s_prime[1]] +=1/3
+
+
 
     return prob_next_state
